@@ -35,12 +35,21 @@ On the one hand, there is much considerable interest in the ticket of the parks.
 At present, many provinces in China are working on the pilot national parks, responding to the call of the State Council. The new approved The Overall Scheme of the National Park System Establishment emphasizes the concept of “ecological protection first”, “national representation” and “public welfare”. The appearence of pilot national parks points out the direction for future park development. How will the national park system develop? How will we enter the national park in the future? Let us wait and see what will happen.
 
 *Data Sources:*
+
 *People’s Daily: “Scenic spots turned into national park and changed what”.*
+
 *People’s Daily: “Hangzhou West Lake has canceled tickets for many years in exchange for great tourism revenue.”*
+
 *Xinhuanet: “Discussion and thinking about the establishment of the national park system.”*
+
 *Yang Rui: ” Analysis of Current Situation of the Management of Chinese Natural and Cultural Heritage”, Chinese Landscape Architecture, 2003.9.*
+
 *Li Rusheng: “Comparison Research of National Park between America and China”, Beijing Forestry University, 2005.11.*
+
 *Qin Yang: ” Research of National Park Ticket Price”, Dongbei University of Finance & Economics, 2005.12.*
+
 *He Ming: ” Thinking about the National Park Management System “, Tourism Management Research, 2014.1.*
+
 *[International Union for Conservation of Nature](https://www.iucn.org/).*
+
 *[National Park Construction Network](http://www.forestry.gov.cn/Zhuanti/index/201408gjgyjs.html).*
