@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1"/>
+    <title>风景名胜区和国家公园之间，隔了一张高价门票</title>
+    <script type="text/javascript" src="js/d3.min.js"></script>
+    <script src="js/topojson.js"></script>
+ 
+    <style>
+		@font-face {
+		  font-family: "GBK";   /*字体名称*/
+		  src: url("font/GBK.ttf");       /*字体源文件*/
+		}
+		@font-face {
+		  font-family: "GBK_M";   /*字体名称*/
+		  src: url("font/GBK_M.TTF");       /*字体源文件*/
+		}
+		@font-face {
+		  font-family: "GBK_H";   /*字体名称*/
+		  src: url("font/GBK_H.TTF");       /*字体源文件*/
+		}
+        path {
+            stroke: #fff;
+            stroke-width: .5px;
+        }
+        body{
+        	line-height: 24px;
+        	margin: 0px;
+            background-color: #fff;
+            /*background-image: url("image/top.jpg");
+            background-size: 100% auto;
+            background-repeat:no-repeat;*/
+            color: #cdcdcd;
+            font-family: "GBK_M",arial,"Microsoft YaHei","微软雅黑";
+    	}
+    	a{
+    		padding-left: 80%;
+    		color: #fff;
+    		text-decoration: none;
+    	}	
+    	.first1{
+    		background-color: #595959;
+    		opacity: 0.9;
+    	}
+    	.first2{
+    		opacity: 0.9;
+    	}
+        .annotation{
+        	float: left;
+        	padding-left: 10%;
+    		padding-right: 10%;
+    		color: #a0a0a0;
+    		font-family: "GBK_H";
+        }
+        .inter{
+        	float: left;
+        	padding-left: 35%;
+    		padding-right: 35%;
+        	text-align: center;
+        }
+        .legend{
+        	float: left;
+        	padding-left: 10%;
+    		padding-right: 10%;
+        	text-align: center;
+        }
+        .maintext{
+        	float: left;
+    		padding-left: 10%;
+    		padding-right: 10%;
+    		color:#595959;
+    	}
+    	.two{
+    		float: left;
+    		padding-left: 10%;
+    		padding-right: 10%;
+    		text-align: center;
+    		color: #a0a0a0;
+    	}
+    </style>
+</head>
+ 
+<body>
+<!-- Part zero -->
+	<div class = "first1">
+		<a href="index en.html">English</a>
+	</div>
+	<div class = "first2">
+		<img id="div_first" src="image/top1.jpg" width="100%" height="100%">
+	</div>
+	<div class="inter">
+		<p> </p>
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>
+		国家公园是一个国家的自然与历史文化名片，是国家最高品质的自然文化遗产。世界各国对于国家公园的定义不尽相同，根据世界自然保护联盟(IUCN)的定义，国家公园是指：具有一个或更多完整生态系统、不受除必要管理之外的开发占用、用于科教并提供娱乐的保护地。在中国2015年发布的《建立国家公园体制试点方案》中，也提到国家公园体制试点要实现“保护为主”和“全民公益性优先”。<br/>
+		<br/>
+		简言之，国家公园体制就是一种保护地模式。1872年建立的美国黄石公园是世界上第一座国家公园。目前，全球225个国家建立了9800个不同类型的国家公园，所占的地球表面积约560万平方公里，相当于大半个中国的国土面积，有效保护了生态环境。<br/>
+		<br/>
+		在中国，与国家公园相当的要数国家级风景名胜区了。这不只是因为国家级风景名胜区的外文译名“National Park of China”，更多的是因为其自然和文化的含量。<br/>
+		<br/>
+		中国复杂多样的地理环境和悠久灿烂的历史文化，留下了丰富的自然和文化遗产。为了保护和开发，这些遗产大都被设立为国家级风景名胜区，其中很多同时是国家级的森林公园、湿地公园或地质公园。随着国家公园体制改革的推进，这些名胜区极有可能变身国家公园。在2015年确立的9个国家公园体制试点中，就有5个是风景名胜区。<br/>
+		<br/>
+		2017年3月29日，第九批国家级风景名胜区名单经国务院审定发布，新添19处名胜，至此，国家级风景名胜区总数达到244个，总面积约12万平方公里。它们在各个省份基本都有分布，不过以北纬30度附近的最为集中：云、贵、川、湘、赣、闽、浙。其中最多的为浙江省，有22个。
+		</p>
+	</div>
+<!-- Part one -->
+	<iframe src="Chinese map.html" width="100%" frameborder="0" scrolling="no" id="data_iframe" onload="stateChange(this)" style="overflow:hidden;">
+	</iframe>
+	<div class="annotation">
+		<p>
+		数据来源：国家公园网，携程网<br/>
+		数据说明：<br/>
+		1.黑点代表国家级风景名胜区的位置，地图颜色由深到浅代表名胜区数量由多到少<br/>
+		2.黄河壶口瀑布风景名胜区处于山西和陕西省交界，故计算两次<br/>
+		</p>
+	</div>
+	<div class="inter">
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>为了了解这些风景区的特征，我们对244个国家级风景名胜区进行了旅游要点归纳，将其作为景区标签。比如，黄山风景名胜区的旅游要点为山峰、奇石、飞泉、道教，黄帝陵风景名胜区的旅游要点为文化、历史、陵墓、古建筑、森林。总体而言，风景区的自然因素占比更大，山、历史、文化、河流、湖泊、森林、植物等词汇频繁出现，历史、文化因素往往依托自然因素存在，如武当山风景名胜区、杭州西湖风景名胜区。<br/>
+		<br/>
+		山峰、森林、湖泊、河流等是自然生态系统调节不可或缺的部分，同时，它们往往是野生动植物的生长地或栖息地，维持着生物多样性。随着我国工业化和城镇化的持续推进，土地资源愈加紧缺，环境破坏严重。保护这些景区，对保护生态平衡、促进国家生态文明建设具有不可替代的作用。而这正好与建立国家公园的初衷“保护为主”相符。
+		</p>
+	</div>
+
+<!-- Part two point one -->
+	<div class="two">
+		<img src="image/cloud.jpg" width="50%" height="100%">
+	</div>
+	<div class="annotation">
+			<p>
+			数据来源：国家公园网
+			</p>
+	</div>
+	<div class="inter">
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>
+		尽管被冠以“国家级”的名号，这些风景区的现状与设想中的国家公园相去甚远。根据中国住建部城市建设司副司长李如生的研究，各大风景区的管委会行政级别差距较大，有的是政府机构，如五台山风景名胜区；有的是政府派出机构，泰山风景名胜区；有的甚至没有明确的管理机构，如三江并流风景名胜区。尽管国务院在2006年公布了《风景名胜区条例》，管理权责不清的现象仍未根本解决。<br/>
+		<br/>
+		李如生的研究还显示，管理机构的不统一导致国家级风景区主要依靠门票收入来维持运转。据《人民日报》报道：2015年，中国225处国家级风景名胜区每年的补助资金只有2300万元，特别是中国75%的风景名胜区位于经济欠发达地区，不仅没有财政拨款，还得向地方财政上缴不菲的收入，最终不得不“靠景吃景”。<br/>
+		<br/>
+		2007年国务院对景区门票发布“三年内不得调价”的“限价令”，但之后各大景区仍是“涨”声不断，只是周期变成了三年。中国旅游研究院院长戴斌在接受媒体采访时表示：“大部分高等级景区属于国有资源，比如故宫、长城、九寨沟等，把公共资源拿来牟利，价格还不断上涨，老百姓在心理上会有不乐意。”
+		<br/>
+		<br/>
+		那这些“未来的国家公园”票价到底有多高？民众还能游得起风景区吗？我们查找搜集了244个国家级风景名胜区的门票价格，算出每个省份风景名胜区的平均票价，以及平均票价占该省人均可支配月收入的比值。<br/>
+		<br/>
+		</p>
+	</div>
+<!-- Part two point two-->
+	<div class="legend">
+		<img src="image/province.jpg" width="100%" height="100%">
+	</div>
+	<div class="annotation">
+			<p>
+			数据来源:国家统计局，携程网<br/>
+			数据说明:<br/>
+			1.门票价格为本国人最低入场费用，不含附加服务与额外游玩项目<br/>
+			2.上海没有风景名胜区，港澳台地区无数据，因此未在图表中出现<br/>
+			3.数据采集时间为2017年4月10日至4月17日<br/>
+			</p>
+	</div>
+	<div class="maintext">
+		<p>
+		30个省份中，平均门票价格在100元以上的就有13个，将近一半，其它的除山东为46元之外，全都在60元以上；平均票价占人均月收入6%以上的有14个，也接近一半，这意味着在这些省份，人们每个月的收入只够走进十几次景区。实际上，这个数字还要打折扣。人们在景区的交通、住宿、餐饮等消费，会让总花费远高于门票。例如在张家界风景名胜区的预定一间大床房至少需要300元；武当山风景名胜区附近的餐馆，人均消费也在30元以上，这让更多人对风景区望而却步。<br/>
+		<br/>
+		对比其他国家的一些国家公园或风景区，中国景区门票高的问题便更为突出。我们将中国的风景名胜区和美国、印度著名的国家公园进行了数据对比。以风景区门票价格占国民人均月收入的比重作为参照数据，中国的风景区票价远高于大部分美国和印度的国家公园。美国经济发达，当然有能力负担国家公园的维护费用，但印度与中国同属发展中国家，仍能维持国家公园的低票价，可以看出公益性是国家公园的重要特征。
+		<br/>
+		<br/>
+		</p>
+	</div>
+	<div class="legend">
+		<img src="image/income.gif" width="100%" height="100%">
+	</div>
+	<div class="annotation">
+		<p>
+		数据来源:  World Bank International Comparison Prograzm database，携程网<br/>
+		数据说明:<br/>
+		1.门票价格为本国人最低入场费用，不含附加服务与额外游玩项目<br/>
+		2.1USD=6.67RMB，1INR=0.10RMB，中国内地人均月收入约为4509元，印度人均月收入约为144元，美国人均月收入约为3,1925元<br/>
+		3.数据采集时间为2017年4月10日至4月17日<br/>
+		</p>
+	</div>
+<!-- Part three -->
+	<div>
+	<div class="inter">
+		<p></p>
+		<p></p>
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>
+		在某种程度上，国家公园的公益属性和经济效益是相冲突的。国外的一些国家公园能够重视其公共服务和文化教育功能，维持着低廉的票价甚至免费开放，有其巨大的财政投入和有效的管理作为基础。例如美国的国家公园，要由国会拨款维持日常运转，公园管理局绝不准许下达创收指标。<br/>
+		<br/>
+		一方面是利益可观的门票经济，另一方面是国家公园的公益性、惠民性，如何做好权衡，考验政府部门的智慧。在这个问题上，杭州市政府就起到了很好的示范作用：杭州西湖风景区自2002年开始免门票，至今已经十余年，旅游收入不降反增。2014年杭州旅游接待国内游客10606.43万人次，比2002年增长252.4%；实现旅游总收入1886.33亿元，比2002年增长483.6%。同时，在2014年的游客满意度调查中，游客对西湖风景名胜区的满意率达到了98.29%。<br/>
+		<br/>
+		目前，中国各省份都在相应国家号召进行国家公园的试点。新通过的《建立国家公园体制总体方案》强调了生态保护第一、国家代表性、全民公益性的国家公园理念，给未来的公园发展指明了方向。国家公园体制将会怎样发展？我们又将以怎样的姿态走进国家公园？让我们拭目以待。
+		</p>
+	</div>
+	</div>
+<!-- Part four -->
+	<div class="maintext" style="color:#a0a0a0">
+		<p>
+		<br/>
+		<br/>
+		数据来源:<br/>
+		人民日报：《景区变身国家公园，能改变什么》.<br/>
+		人民日报：《杭州西湖免门票多年 换来旅游总收入提高》.<br/>
+		新华网：《建立国家公园体制的探讨与思考》.<br/>
+		杨锐：《中国自然文化遗产管理状况分析》，《风景园林》2003年9月刊.<br/>
+		李如生：《美国国家公园与中国风景名胜区比较研究》，北京林业大学，2005.11.<br/>
+		秦杨：《国家级风景名胜区门票价格研究》，东北财经大学，2005.12.<br/>
+		何明：《关于风景名胜区管理体制的思考》，旅游管理研究，2014.1.<br/>
+		世界自然保护联盟，https://www.iucn.org/.<br/>
+		<span style="word-break:break-all">国家公园建设网，http://www.forestry.gov.cn/Zhuanti/index/201408gjgyjs.html.</span>
+		<br/>
+		<br/>
+		<br/>
+		</p>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var imgArr=["image/top1.jpg","image/top2.jpg","image/top3.jpg"];
+
+	var x = 0;       
+    function time1(){
+            x ++;   
+            x= x % 3;         //         超过2则取余数，保证循环在0、1、2之间
+            document.getElementById("div_first").src = imgArr[x];
+    }setInterval("time1()",5000);
+
+	var ifm= document.getElementById("data_iframe");
+	ifm.height=document.documentElement.clientHeight<600?document.documentElement.clientHeight*0.7:document.documentElement.clientHeight*1.1;		        	    
+</script>
+
+</html>

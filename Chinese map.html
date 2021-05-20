@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1"/>
+    <title>中国地图</title>
+    <script type="text/javascript" src="js/d3.min.js"></script>
+    <script src="js/topojson.js"></script>
+ 
+    <style>
+        .map-cn{
+            float: left;
+        	position: relative;
+        	width: 100%;
+            height: auto;
+        	text-align: center;
+        }
+        .chinasea{
+        	position: absolute;
+        	left: 80%;
+        	top: 60%;
+        	width: 8%;
+        	border:1px solid #595959;
+            z-index: -1;
+        }
+        .tooltip1{
+            font-size: 14px;
+            width: 200px;
+            height: auto;
+            position: absolute;
+            text-align: center;
+            border-style: solid; 
+            border-color: grey; 
+            border-width: 1px;
+            background-color: white;
+            border-radius: 5px;
+            background:rgba(0,0,0,0.9);
+            padding:4px;
+            color:white;
+        }
+        .tooltip2{
+            font-size: 11px;
+            width: 100px;
+            height: auto;
+            position: absolute;
+            text-align: center;
+            border-style: solid; 
+            border-color: grey; 
+            border-width: 0.5px;
+            background-color: white;
+            border-radius: 5px;
+            background:rgba(0,0,0,0.9);
+            color:white;
+        }
+        .location circle{
+        	fill: #595959;
+        }
+    </style>
+</head>
+ 
+<body>
+	<div class="map-cn"></div>
+	<div class="chinasea">
+		<img src="image/chinasea.jpg" width="100%">
+	</div>
+</body>
+
+<script type="text/javascript">
+	var width = document.body.clientWidth<600?document.body.clientWidth:0.8*document.body.clientWidth;
+    var height = 0.7*width;
+
+    var svg = d3.select(".map-cn")
+    		.append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("preserveAspectRatio", "xMidYMid")
+            .attr("viewBox", "0 0 " + width + " " + height);
+ 
+    var tooltip = d3.select(".map-cn")
+                    .append("div")
+                    .attr("class",[width>600?"tooltip1":"tooltip2"])
+                    .style("opacity",0.0);
+
+    d3.json("data/chinamap.json", function (error, cn) {
+        var features = svg.append("g")
+        /*.attr("class", "features")*/
+        .selectAll("path")
+        .data(cn.features)
+        .enter()
+        .append("path")
+        //.style("fill", "#ccc")
+        .on("mouseover", function (d) {
+            tooltip.html((d.id) + "：<br/>" + (d.number))
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 55) + "px")
+            .style("opacity",1.0);
+        })
+        .on("mouseout", function () {
+            tooltip.style("opacity",0.0);
+        }) 
+        .attr("d", path)
+
+        d3.json("data/tourism.json",function(error, valuedata){
+            var values = [];
+            for(var i=0; i<valuedata.provinces.length; i++){
+                var name = valuedata.provinces[i].name;
+                var value = valuedata.provinces[i].value;
+                values[name] = value;
+            }
+            var maxvalue = d3.max(valuedata.provinces, function(d){ return d.value; });
+            var minvalue = 0;
+
+            //定义一个线性比例尺，将最小值和最大值之间的值映射到[0, 1]
+            var linear = d3.scale.linear()
+                    .domain([minvalue, maxvalue])
+                    .range([0, 1]);
+            var a = d3.rgb("#bceaef");    
+            var b = d3.rgb("#22c6dc");    
+
+            var computeColor = d3.interpolate(a,b);
+
+            //设定各省份的填充色  
+            features.style("fill", function(d,i){  
+                var t = linear( values[d.id] );  
+                var color = computeColor(t);  
+                return color.toString();  
+            }); 
+
+            //定义一个线性渐变  
+    	    var defs = svg.append("defs");  
+    	      
+    	    var linearGradient = defs.append("linearGradient")  
+    	                            .attr("id","linearColor")  
+    	                            .attr("x1","0%")  
+    	                            .attr("y1","0%")  
+    	                            .attr("x2","100%")  
+    	                            .attr("y2","0%");  
+    	      
+    	    var stop1 = linearGradient.append("stop")  
+    	                    .attr("offset","0%")  
+    	                    .style("stop-color",a.toString());  
+    	      
+    	    var stop2 = linearGradient.append("stop")  
+    	                    .attr("offset","100%")  
+    	                    .style("stop-color",b.toString());  
+    	      
+    	    //添加一个矩形，并应用线性渐变  
+    	    var colorRect = svg.append("rect")  
+    	                .attr("x", width/8)  
+    	                .attr("y", height*0.75)  
+    	                .attr("width", width/5-width/8)  
+    	                .attr("height", 20)  
+    	                .style("fill","url(#" + linearGradient.attr("id") + ")");  
+    	      
+    	    //添加文字  
+    	    var minValueText = svg.append("text")  
+    	                .attr("class","valueText")  
+    	                .attr("x", width/8)  
+    	                .attr("y", height*0.75)  
+    	                .attr("dy", "-0.3em")  
+    	                .text(function(){  
+    	                    return minvalue;  
+    	                });  
+    	      
+    	    var maxValueText = svg.append("text")  
+    	                .attr("class","valueText")  
+    	                .attr("x", width/5)  
+    	                .attr("y", height*0.75)  
+    	                .attr("dy", "-0.3em")  
+    	                .text(function(){  
+    	                    return maxvalue;  
+    	                });  
+    	   })
+
+    });
+
+    
+
+    var ratio = width/900;
+    //画中国地形图      
+    var projection = d3.geo.mercator()
+        .center([width>500?103.8:108.8, 36.9])
+        .scale(680*ratio) 
+        .translate([width/2, height/2]);
+
+    
+    var path = d3.geo.path()
+                    .projection(projection);    
+
+
+    d3.json("data/park.json", function(error, places ) {
+
+            //插入分组元素
+            var location = svg.selectAll(".location")
+                            .data(places.location)
+                            .enter()
+                            .append("g")
+                            .attr("class","location")
+                            .attr("transform",function(d){
+                                //计算标注点的位置
+                                var coor = projection([d.log, d.lat]);
+                                if(!isNaN(coor[1])){
+                                    return "translate("+ coor[0] + "," + coor[1] +")";
+                                }
+                            });
+
+            //插入一个圆
+            location.append("circle")
+                .attr("r",2);
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1"/>
+    <title>How far between the Chinese and global national parks? The length of a high-price ticket</title>
+    <script type="text/javascript" src="js/d3.min.js"></script>
+    <script src="js/topojson.js"></script>
+ 
+    <style>
+		@font-face {
+		  font-family: "GBK";   /*字体名称*/
+		  src: url("font/GBK.ttf");       /*字体源文件*/
+		}
+		@font-face {
+		  font-family: "GBK_M";   /*字体名称*/
+		  src: url("font/GBK_M.TTF");       /*字体源文件*/
+		}
+		@font-face {
+		  font-family: "GBK_H";   /*字体名称*/
+		  src: url("font/GBK_H.TTF");       /*字体源文件*/
+		}
+        path {
+            stroke: #fff;
+            stroke-width: .5px;
+        }
+        body{
+        	line-height: 24px;
+        	margin: 0px;
+            background-color: #fff;
+            color: #cdcdcd;
+            font-family: "GBK_M",arial,"Microsoft YaHei","微软雅黑";
+    	}
+    	a{
+    		padding-left: 80%;
+    		color: #fff;
+    		text-decoration: none;
+    	}	
+    	.first1{
+    		background-color: #595959;
+    		opacity: 0.9;
+    	}
+    	.first2{
+    		opacity: 0.9;
+    	}
+        .annotation{
+        	float: left;
+        	padding-left: 10%;
+    		padding-right: 10%;
+    		color: #a0a0a0;
+    		font-family: "GBK_H";
+        }
+        .inter{
+        	float: left;
+        	padding-left: 35%;
+    		padding-right: 35%;
+        	text-align: center;
+        }
+        .legend{
+        	float: left;
+        	padding-left: 10%;
+    		padding-right: 10%;
+        	text-align: center;
+        }
+        .maintext{
+        	float: left;
+    		padding-left: 10%;
+    		padding-right: 10%;
+    		color:#595959;
+    	}
+    	.two{
+    		float: left;
+    		padding-left: 10%;
+    		padding-right: 10%;
+    		text-align: center;
+    		color: #a0a0a0;
+    	}
+    </style>
+</head>
+ 
+<body>
+<!-- Part zero -->
+	<div class = "first1">
+		<a href="index.html">中文</a>
+	</div>
+	<div class = "first2">
+		<img id="div_first" src="image/top1 en.jpg" width="100%" height="100%">
+	</div>
+	<div class="inter">
+		<p> </p>
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>
+		National park reflects a country's nature, history and culture. It also includes the country's high- quality natural and cultural heritage. According to the definition of the International Union for Conservation of Nature (IUCN), a national park refers to one or several ecosystems not materially altered by human exploitation and occupation, where plant and animal species, geomorphological sites and habitats are of special scientific, educational, and recreational interest or which contain a natural landscape of great beauty. In 2015, Chinese government released <i>The Pilot Scheme of the National Park System Establishment</i>, which mentioned that the new national park system would strengthen the role of "protection" and "universal public welfare".<br/>
+		<br/>
+		In short, the national park system is used for conservation purposes. Founded in 1872, the Yellowstone National Park is the world's first national park. At present, 225 countries around the world have established 9800 different types of national parks, covering about 5.6 million square kilometers of the surface area, which effectively protects the ecological environment.<br/>
+		<br/>
+		"National Park of China" plays the same role as the national park system around the world, not only because of its similar name, but because of its natural and cultural content.<br/>
+		<br/>
+		Diverse geographical environments, long history and splendid culture leave many heritages to Chinese people. In order to protect and develop, most heritages are protected as National Park of China, many of which are also protected as national forest parks, wetland parks or geological parks. With the advancement of the national park system, these attractions are likely to turn into national parks. Among the pilot national parks established in 2015, five-ninths are National Park of China.<br/>
+		<br/>
+		On March 29, 2017, the ninth batch of National Park of China containing 19 new attractions was approved by the State Council. Thus, the total number of National Park of China reached 244, covering the area of about 120,000 square kilometers. The parks locate in different provinces, but most of them concentrate in provinces near 30°N: Yunnan, Guizhou, Sichuan, Hunan, Jiangxi, Fujian and Zhejiang. The Zhejiang Province has the most number of National Park of China, 22 parks.
+	</div>
+<!-- Part one -->
+	<iframe src="Chinese map en.html" width="100%" frameborder="0" scrolling="no" id="data_iframe" onload="stateChange(this)" style="overflow:hidden;">
+	</iframe>
+	<div class="annotation">
+		<p>
+		Source: GJGY.COM, Ctrip<br/>
+		Data Description:<br/>
+		1. Black spots represent the location of National Park of China; the map color from deep to shallow represents the number of National Park from more to less<br/>
+		2. Hukou Falls of Yellow River National Park locates at the junction of Shanxi and Shaanxi Province, so it is calculated twice<br/>
+		</p>
+	</div>
+	<div class="inter">
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>In order to understand the characteristics of National Park of China, we conclude the tourism features of the 244 National Parks and make tourism labels for each of them. For example, Mount Huang National Park has tourism labels including Peak, Rock, Spring and Taoism; the Yellow Emperor Mausoleum National Park has labels including Culture, History, Mausoleum, Architecture and Forest. In general, the National Parks of China have more natural factors than cultural factors. The labels like Mountain, History, Culture, River, Lake, Forest and Plant occur frequently.<br/>
+		<br/>
+		Mountains, forests, lakes and rivers are indispensable parts of natural ecosystems. They are the habitats of wildlife and maintain the biodiversity. With the industrialization and urbanization of China, the land resources are becoming scarce and the environment is seriously damaged. Protecting these areas means maintaining the ecological balance and providing a better environment for everyone.
+		</p>
+	</div>
+
+<!-- Part two point one -->
+	<div class="two">
+		<img src="image/cloud en.jpg" width="50%" height="100%">
+	</div>
+	<div class="annotation">
+			<p>
+			Source: GJGY.COM
+			</p>
+	</div>
+	<div class="inter">
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>
+		Although known as national parks, the status of National Park of China is much lower than that in other countries. According to the research of Li Rusheng, a Chinese official working in Ministry of Housing and Urban-Rural Development, the management organization of the National Parks is confusing. Some organizations are the government itself, such as Mount Wutai National Park; some are government agencies, such as Mount Tai National Park; some even don’t have clear management organizations, such as Three Parallel Rivers National Park. Although the State Council announced the "National Park Regulations” in 2006, the unclear management of the parks is still a big problem.<br/>
+		<br/>
+		Li Rusheng's research also shows that the non-uniformity of the management leads to the situation that National Park of China mainly relies on ticket sales to meet daily expenses. People's Daily reported in 2015 that 225 National Parks of China receive only 23 million yuan as annual subsidy funds. What’s worse, 75 percent of the national parks locate in economically underdeveloped areas, which don’t have financial allocation. Some national parks have to pay a lot of money to their local government and increase local fiscal revenue.<br/>
+		<br/>
+		In 2007, the State Council promulgated the "price limit order," which prohibited national parks to increase price for three years. However, after that, the price of national parks still rose sharply. Dai Bin, the president of China Tourism Academy, said in an interview: "Most of the high-level parks are state-owned resources, such as the Forbidden City, the Great Wall, Jiuzhaigou Valley, etc. The public resources are used for profit, and the prices continue to rise, so the people are unwilling to accept that. "<br/>
+		<br/>
+		How high are the prices of National Park of China? Do people still have the money to enjoy them? We collect the entrance ticket prices of 244 National Parks of China, and then calculate the average ticket price (ATP) of each province and the ratio of the average price to the monthly income per capita of the province.<br/>
+		<br/>
+		</p>
+	</div>
+<!-- Part two point two-->
+	<div class="legend">
+		<img src="image/province en.jpg" width="100%" height="100%">
+	</div>
+	<div class="annotation">
+		<p>
+		Source: National Bureau of Statistics of China, Ctrip<br/>
+		Data Description:<br/>
+		1. Ticket price refers to the minimum admission fee, excluding the additional charges in the parks<br/>
+		2. Shanghai has no national parks, and Hong Kong, Macao and Taiwan have different national park systems, so they are not in the chart<br/>
+		3. Data collection time: April 10, 2017 - April 17, 2017<br/>
+		</p>
+	</div>
+	<div class="maintext">
+		<p>
+		13 of the 30 provinces have the average price of greater than 100 yuan, and the tourists visiting the other provinces except Shandong have to pay over 60 yuan for a ticket. In 14 provinces, average price of the parks accounts for more than 6% income per capita, which means that a local worker can only visit the park for about 10 times per month. In fact, this computation is a rough one, because tourists pay for the traffic, accommodation, food and other things in the park, which makes the total cost much higher than ticket price. For example, in Zhangjiajie National Park, a large-bed room costs at least 300 yuan for one night; the per-capita consumption of restaurants around Mount Wudang National Park is more than 30 yuan, which makes more people give up visiting national parks.<br/>
+		<br/>
+		Compared to national parks or scenic areas in other countries, the problem of China is more prominent. We compare National Park of China with famous national parks in the United States and India, and we find China's ticket prices are much higher than most national parks in United States and India. The United States is a developed country, which has the ability to afford the maintenance charge of national parks, but India, a developing country with large population like China, can also maintain the low price of national parks.<br/>
+		<br/>
+		</p>
+	</div>
+	<div class="legend">
+		<img src="image/income en.gif" width="100%" height="100%">
+	</div>
+	<div class="annotation">
+		<p>
+		Source: World Bank International Comparison Program database, Ctrip<br/>
+		Data Description:<br/>
+		1. Ticket price refers to the minimum admission fee, excluding the additional charges in the parks<br/>
+		2.1USD = 6.67RMB, 1INR = 0.10RMB, China's monthly income per capita is about 4509 yuan, India's monthly income per capita is about 144 yuan, the US’s monthly income per capita is about 31925 yuan<br/>
+		3. Data collection time: April 10, 2017 - April 17, 2017<br/>
+		</p>
+	</div>
+<!-- Part three -->
+	<div>
+	<div class="inter">
+		<p></p>
+		<p></p>
+		<img src="image/interval.png" width="12%" height="100%">
+	</div>
+	<div class="maintext">
+		<p>
+		To a certain extent, the public welfare features and economic benefits of national parks are in conflict. Some national parks provide public services, cultural and educational functions and maintain a low price or even free to tourists, because they are under effective management and receive huge financial investment. For example, the daily expenditures of US national parks are allocated by the Congress, and the management organizations are not allowed to set targets for earning money.<br/>
+		<br/>
+		On the one hand, there is much considerable interest in the ticket of the parks. On the other hand, the national parks are the public resources that should be enjoyed by everyone. How to find a balance tests the wisdom of government officials. The Chinese Hangzhou municipal government has played an exemplary role in this issue. West Lake of Hangzhou National Park canceled the entrance ticket in 2002, and the tourism income did not drop, but increased on the contrary. In 2014, Hangzhou received 106.0643 million domestic tourists, an increase of 252.4% over 2002. The total tourism revenue reached 188.633 billion yuan, an increase of 483.6% over 2002. At the same time, in the 2014 tourist satisfaction survey, West Lake of Hangzhou National Park’s satisfaction rate reached 98.29%.<br/>
+		<br/>
+		At present, many provinces in China are working on the pilot national parks, responding to the call of the State Council. The new approved <i>The Overall Scheme of the National Park System Establishment</i> emphasizes the concept of “ecological protection first”, “national representation” and “public welfare”. The appearence of pilot national parks points out the direction for future park development. How will the national park system develop? How will we enter the national park in the future? Let us wait and see what will happen.
+		</p>
+	</div>
+	</div>
+<!-- Part four -->
+	<div class="maintext" style="color:#a0a0a0;word-break:break-all">
+		<p>
+		<br/>
+		<br/>
+		Data Sources:<br/>
+		People's Daily: "Scenic spots turned into national park and changed what".<br/>
+		People's Daily: "West Lake of Hangzhou has canceled tickets for many years in exchange for great tourism revenue."<br/>
+		Xinhuanet: "Discussion and thinking about the establishment of the national park system."<br/>
+		Yang Rui: " Analysis of Current Situation of the Management of Chinese Natural and Cultural Heritage", Chinese Landscape Architecture, 2003.9.<br/>
+		Li Rusheng: "Comparison Research of National Park between America and China", Beijing Forestry University, 2005.11.<br/>
+		Qin Yang: " Research of National Park Ticket Price", Dongbei University of Finance &amp; Economics, 2005.12.<br/>
+		He Ming: " Thinking about the National Park Management System ", Tourism Management Research, 2014.1.<br/>
+		International Union for Conservation of Nature, https: //www.iucn.org/.<br/>
+		<span style="word-break:break-all">National Park Construction Network, http: //www.forestry.gov.cn/Zhuanti/index/201408gjgyjs.html.</span>
+		<br/>
+		<br/>
+		<br/>
+		</p>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var imgArr=["image/top1 en.jpg","image/top2 en.jpg","image/top3 en.jpg"];
+
+	var x = 0;       
+    function time1(){
+            x ++;   
+            x= x % 3;         //         超过2则取余数，保证循环在0、1、2之间
+            document.getElementById("div_first").src = imgArr[x];
+    }setInterval("time1()",5000);
+
+	var ifm = document.getElementById("data_iframe");
+	ifm.height = document.documentElement.clientWidth<600?document.documentElement.clientWidth*1.05:document.documentElement.clientWidth*0.55;		        	    
+</script>
+
+</html>
