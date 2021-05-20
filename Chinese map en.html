@@ -189,27 +189,29 @@
                     .projection(projection);    
 
 
-    setTimeout(
-        d3.json("data/park.json", function(error, places ) {
+    
+    d3.json("data/park.json", function(error, places ) {
 
             //插入分组元素
-            var location = svg.selectAll(".location")
-                            .data(places.location)
-                            .enter()
-                            .append("g")
-                            .attr("class","location")
-                            .attr("transform",function(d){
-                                //计算标注点的位置
-                                var coor = projection([d.log, d.lat]);
-                                if(!isNaN(coor[1])){
-                                    return "translate("+ coor[0] + "," + coor[1] +")";
-                                }
-                            });
+        var location = svg.selectAll(".location")
+                        .data(places.location)
+                        .enter()
+                        .append("g")
+                        .attr("class","location")
+                        .attr("transform",function(d){
+                            //计算标注点的位置
+                            var coor = projection([d.log, d.lat]);
+                            if(!isNaN(coor[1])){
+                                return "translate("+ coor[0] + "," + coor[1] +")";
+                            }
+                        });
 
-            //插入一个圆
+        //插入一个圆
+        setTimeout(function (){
             location.append("circle")
-                .attr("r",2);
-    }), 5000);
+                    .attr("r",2);
+        }, 5000);
+    });
 
 
 </script>
